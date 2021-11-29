@@ -12,17 +12,17 @@ int main() {
   ws2812_program_init(pio, sm_id, offset, 1, 800000, false);
   int ledoffset = 0;
   while (true) {
-	  for(int i=0;i<10;i++){
-		  if(i%2==ledoffset){
+    for (int i = 0; i < 10; i++) {
+      if (i % 2 == ledoffset) {
         pio_sm_put_blocking(pio0, sm_id, 0xff000000);
-		  }
-		  else{
+      } else {
         pio_sm_put_blocking(pio0, sm_id, 0x00ff0000);
-		  }
-	  }
+      }
+    }
 
-	  ledoffset++;
-	  if(ledoffset==2)ledoffset=0;
+    ledoffset++;
+    if (ledoffset == 2)
+      ledoffset = 0;
     sleep_ms(500);
   }
 }
